@@ -1,4 +1,4 @@
-# data-platform
+# Data-platform
 
 Plataforma de dados local construída com ferramentas open source, simulando uma arquitetura de mercado real em ambiente de desenvolvimento.
 
