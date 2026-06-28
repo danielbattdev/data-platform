@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.duckdb
+datasets/raw/
+docker/logs/
+docker/.env
+docker/metabase/
+airflow/logs/
+logs/
+storage/
+metabase/plugins/
