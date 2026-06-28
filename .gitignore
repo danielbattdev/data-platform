@@ -11,3 +11,8 @@ airflow/logs/
 logs/
 storage/
 metabase/plugins/
+datasets/raw/
+storage/
+docker/logs/
+docker/.env
+docker/metabase/
