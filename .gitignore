@@ -16,3 +16,4 @@ storage/
 docker/logs/
 docker/.env
 docker/metabase/
+catalog/unitycatalog
