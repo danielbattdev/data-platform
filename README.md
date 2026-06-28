@@ -3,7 +3,7 @@
 Plataforma de dados local desenvolvida como projeto de portfólio, demonstrando capacidade técnica em Engenharia de Dados com ferramentas open source e arquitetura de mercado.
 
 **Desenvolvido por:** Daniel Santos
-**Período:** Junho 2026  
+**Período:** Junho 2026
 
 ---
 
@@ -28,29 +28,19 @@ Implementação completa de uma plataforma de dados moderna seguindo a **Arquite
 ---
 
 ## Arquitetura Medallion
+
+\`\`\`
 Kaggle (Fonte)
+      ↓
+  Bronze Layer  → Dados brutos em Parquet — imutáveis (MinIO: s3://bronze)
+      ↓
+  Silver Layer  → Dados limpos, tipados, sem nulos críticos (MinIO: s3://silver)
+      ↓
+  Gold Layer    → KPIs e métricas de negócio prontas para consumo (MinIO: s3://gold)
+      ↓
+  Metabase Dashboard → Visualizações interativas
+\`\`\`
 
-↓
-
-Bronze Layer          → Dados brutos em Parquet — imutáveis
-
-(MinIO: s3://bronze)
-
-↓
-
-Silver Layer          → Dados limpos, tipados, sem nulos críticos
-
-(MinIO: s3://silver)
-
-↓
-
-Gold Layer            → KPIs e métricas de negócio prontas para consumo
-
-(MinIO: s3://gold)
-
-↓
-
-Metabase Dashboard    → Visualizações interativas
 ---
 
 ## Dataset
@@ -75,45 +65,24 @@ Metabase Dashboard    → Visualizações interativas
 ---
 
 ## Estrutura do Projeto
+
+\`\`\`
 data-platform/
-
-├── airflow/
-
-│   └── dags/
-
-│       └── processing/
-
-│           └── dag_pipeline_olist.py    ← DAG principal do pipeline
-
-├── duckdb/
-
-│   └── scripts/
-
-│       ├── ingest.py                    ← CSV → Bronze Parquet
-
-│       ├── transform_silver.py          ← Bronze → Silver
-
-│       └── transform_gold.py            ← Silver → Gold
-
-├── catalog/
-
-│   └── schemas/
-
-│       └── register_tables.py           ← Registro no Unity Catalog
-
-├── storage/
-
-│   └── bronze/olist/                    ← Parquet files Bronze
-
+├── airflow/dags/processing/
+│   └── dag_pipeline_olist.py    ← DAG principal do pipeline
+├── duckdb/scripts/
+│   ├── ingest.py                ← CSV → Bronze Parquet
+│   ├── transform_silver.py      ← Bronze → Silver
+│   └── transform_gold.py        ← Silver → Gold
+├── catalog/schemas/
+│   └── register_tables.py       ← Registro no Unity Catalog
 ├── tests/
-
-│   └── test_pipeline.py                 ← Testes de qualidade
-
+│   └── test_pipeline.py         ← Testes de qualidade
 ├── docker-compose.yml
-
 ├── requirements.txt
-
 └── README.md
+\`\`\`
+
 ---
 
 ## Como Executar
@@ -123,9 +92,7 @@ data-platform/
 - Python 3.11
 - 8GB RAM mínimo
 
-### Passo a Passo
-
-```bash
+\`\`\`bash
 # 1. Clonar o repositório
 git clone https://github.com/Henry-Schein-Brasil/data-projects-young-e2e.git
 cd data-projects-young-e2e
@@ -148,7 +115,7 @@ python duckdb/scripts/transform_gold.py
 
 # 6. Executar testes
 python tests/test_pipeline.py
-```
+\`\`\`
 
 ### Serviços Disponíveis
 
@@ -161,29 +128,16 @@ python tests/test_pipeline.py
 
 ---
 
-## Pipeline Airflow
-
-A DAG `pipeline_olist` executa automaticamente todo dia às 6h:
-ingestao_bronze → bronze_to_silver → silver_to_gold
-Trigger manual:
-```bash
-docker exec docker-airflow-scheduler-1 airflow dags trigger pipeline_olist
-```
-
----
-
 ## Testes de Qualidade
 
-```bash
+\`\`\`bash
 python tests/test_pipeline.py
-
-# Output esperado:
 # ✅ Bronze OK
 # ✅ Silver OK
 # ✅ Gold vendas_mensais OK
 # ✅ Gold performance_estados OK
 # 🎉 Todos os testes passaram!
-```
+\`\`\`
 
 ---
 
@@ -201,6 +155,6 @@ python tests/test_pipeline.py
 
 ## Autor
 
-**Daniel Santos**  
-GitHub: [@danielbattdev](https://github.com/danielbattdev)  
+**Daniel Santos**
+GitHub: [@danielbattdev](https://github.com/danielbattdev)
 Henry Schein Brasil — 2026
