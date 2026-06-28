@@ -1,4 +1,4 @@
-# Data Platform — Henry Schein Brasil
+# Data Platform — Portfolio Project
 
 Plataforma de dados local desenvolvida como projeto de portfólio, demonstrando capacidade técnica em Engenharia de Dados com ferramentas open source e arquitetura de mercado.
 
@@ -32,11 +32,11 @@ Implementação completa de uma plataforma de dados moderna seguindo a **Arquite
 \`\`\`
 Kaggle (Fonte)
       ↓
-  Bronze Layer  → Dados brutos em Parquet — imutáveis (MinIO: s3://bronze)
+  Bronze Layer  → Dados brutos em Parquet — imutáveis       (MinIO: s3://bronze)
       ↓
-  Silver Layer  → Dados limpos, tipados, sem nulos críticos (MinIO: s3://silver)
+  Silver Layer  → Dados limpos, tipados, sem nulos críticos  (MinIO: s3://silver)
       ↓
-  Gold Layer    → KPIs e métricas de negócio prontas para consumo (MinIO: s3://gold)
+  Gold Layer    → KPIs e métricas de negócio                 (MinIO: s3://gold)
       ↓
   Metabase Dashboard → Visualizações interativas
 \`\`\`
@@ -94,8 +94,8 @@ data-platform/
 
 \`\`\`bash
 # 1. Clonar o repositório
-git clone https://github.com/Henry-Schein-Brasil/data-projects-young-e2e.git
-cd data-projects-young-e2e
+git clone https://github.com/danielbattdev/data-platform.git
+cd data-platform
 
 # 2. Configurar variáveis de ambiente
 cp .env.example .env
@@ -121,8 +121,8 @@ python tests/test_pipeline.py
 
 | Serviço | URL | Credenciais |
 |---------|-----|-------------|
-| Airflow | http://localhost:8080 | airflow / airflow |
-| MinIO Console | http://localhost:9001 | minioadmin / minioadmin123 |
+| Airflow | http://localhost:8080 | Ver .env |
+| MinIO Console | http://localhost:9001 | Ver .env |
 | Metabase | http://localhost:3000 | — |
 | Unity Catalog | http://localhost:8081 | — |
 
