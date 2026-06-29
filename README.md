@@ -2,7 +2,7 @@
 
 Plataforma de dados local desenvolvida como projeto de portfólio, demonstrando capacidade técnica em Engenharia de Dados com ferramentas open source e arquitetura de mercado.
 
-**Desenvolvido por:** Daniel Batt  
+**Desenvolvido por:** Daniel Santos
 **Período:** Junho 2026  
 
 ---
@@ -201,6 +201,6 @@ python tests/test_pipeline.py
 
 ## Autor
 
-**Daniel Batt**  
+**Daniel Santos**  
 GitHub: [@danielbattdev](https://github.com/danielbattdev)  
 Henry Schein Brasil — 2026
