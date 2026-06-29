@@ -58,15 +58,14 @@ def task_bronze_to_silver():
             SELECT
                 customer_id,
                 customer_unique_id,
-                INITCAP(TRIM(customer_city)) AS city,
-                UPPER(TRIM(customer_state))  AS state
+                customer_city    AS city,
+                customer_state   AS state
             FROM read_parquet('s3://bronze/olist/customers/customers.parquet')
             WHERE customer_id IS NOT NULL
         ) TO 's3://silver/olist/customers/customers_clean.parquet'
         (FORMAT PARQUET, COMPRESSION 'snappy')
     """)
-    logging.info("✅ Silver customers criada.")
-    con.close()
+    logging.info("Silver customers criada.")
 
 def task_silver_to_gold():
     import duckdb
