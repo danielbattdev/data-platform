@@ -1,11 +1,15 @@
 import duckdb
+import os
+from dotenv import load_dotenv
+
+load_dotenv(os.path.expanduser('~/data-platform/.env'))
 
 def configure_duckdb_s3(con):
     con.execute("INSTALL httpfs; LOAD httpfs;")
-    con.execute("""
-        SET s3_endpoint='localhost:9000';
-        SET s3_access_key_id='minioadmin';
-        SET s3_secret_access_key='minioadmin123';
+    con.execute(f"""
+        SET s3_endpoint='{os.getenv("MINIO_ENDPOINT").replace("http://","")}';
+        SET s3_access_key_id='{os.getenv("MINIO_ACCESS_KEY")}';
+        SET s3_secret_access_key='{os.getenv("MINIO_SECRET_KEY")}';
         SET s3_use_ssl=false;
         SET s3_url_style='path';
     """)
