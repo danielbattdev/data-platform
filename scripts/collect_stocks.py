@@ -1,3 +1,8 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 import yfinance as yf
 import psycopg2
 from datetime import datetime
@@ -5,11 +10,11 @@ from datetime import datetime
 TICKERS = ['AAPL', 'MSFT', 'HSIC']
 
 DB_CONFIG = {
-    'host': 'localhost',
-    'port': 5432,
-    'dbname': 'airflow',
-    'user': 'airflow',
-    'password': 'airflow'
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'port': int(os.environ.get('DB_PORT', 5432)),
+    'dbname': os.environ.get('DB_NAME', 'airflow'),
+    'user': os.environ.get('DB_USER'),
+    'password': os.environ.get('DB_PASSWORD'),
 }
 
 def collect_and_save():
